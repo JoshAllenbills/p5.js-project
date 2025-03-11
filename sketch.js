@@ -2,7 +2,6 @@
 let circles = []; // Array to store moving circles
 let bgColors = ['#FF5733', '#33FF57', '#3357FF', '#FFD700', '#8A2BE2']; // Background colors
 let bgColorIndex = 0;
-let lines = []; // Store drawn lines
 let particles = []; // Extra animation for visual interest
 
 function setup() {
@@ -31,20 +30,6 @@ function draw() {
             particles.splice(i, 1);
         }
     }
-
-    // Display all drawn lines
-    for (let line of lines) {
-        stroke(255);
-        strokeWeight(2);
-        line(line.x1, line.y1, line.x2, line.y2);
-    }
-
-    // Draw a live line when the mouse is pressed
-    if (mouseIsPressed) {
-        stroke(255);
-        strokeWeight(2);
-        line(mouseX, mouseY, pmouseX, pmouseY);
-    }
 }
 
 // Change background color with arrow keys
@@ -65,10 +50,7 @@ function mousePressed() {
     }
 }
 
-// Store line positions when dragging
-function mouseDragged() {
-    lines.push({ x1: pmouseX, y1: pmouseY, x2: mouseX, y2: mouseY });
-}
+
 
 // MovingCircle class
 class MovingCircle {
